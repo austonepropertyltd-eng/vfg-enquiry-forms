@@ -1235,9 +1235,11 @@
 
     fetch("https://vfg-insight-hub.lovable.app/functions/v1/submit-enquiry", {
   method: "POST",
+  mode: "cors",
   headers: {
     "Content-Type": "application/json",
-    "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBrc2V1eXVpdHhkcXVsZWVhc292Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NTczODUsImV4cCI6MjA5MjQzMzM4NX0.ZjBPlFkiosVvnukt3gRjURmPjlozuyvXbm9QS24ewjk"
+    "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBrc2V1eXVpdHhkcXVsZWVhc292Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NTczODUsImV4cCI6MjA5MjQzMzM4NX0.ZjBPlFkiosVvnukt3gRjURmPjlozuyvXbm9QS24ewjk",
+    "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBrc2V1eXVpdHhkcXVsZWVhc292Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NTczODUsImV4cCI6MjA5MjQzMzM4NX0.ZjBPlFkiosVvnukt3gRjURmPjlozuyvXbm9QS24ewjk"
   },
   body: JSON.stringify(allDataObject)
 })
@@ -1246,13 +1248,12 @@
   console.log("SUCCESS:", data);
 
   document.getElementById('refCode').textContent = data.referenceCode;
-
   document.getElementById('formCard').style.display = 'none';
   document.getElementById('successScreen').classList.add('show');
 })
 .catch(err => {
   console.error("ERROR:", err);
-  alert("Submission failed. Please try again.");
+  alert("Submission failed: " + err.message);
 });
   }
 </script>
