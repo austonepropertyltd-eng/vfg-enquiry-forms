@@ -1234,38 +1234,26 @@
     };
 
     fetch("https://vfg-insight-hub.lovable.app/functions/v1/submit-enquiry", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(allDataObject)
-    })
-    .then(res => res.json())
-    .then(data => {
-      console.log("SUCCESS:", data);
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "apikey": "YOUR_ANON_KEY"
+  },
+  body: JSON.stringify(allDataObject)
+})
+.then(res => res.json())
+.then(data => {
+  console.log("SUCCESS:", data);
 
-      // Use reference from backend, fallback to local
-      const ref = data.referenceCode || data.ref || data.id
-        || ('VFG-' + Math.random().toString(36).substr(2,6).toUpperCase());
+  document.getElementById('refCode').textContent = data.referenceCode;
 
-      document.getElementById('refCode').textContent = ref;
-      document.getElementById('formCard').style.display = 'none';
-      document.getElementById('successScreen').classList.add('show');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    })
-    .catch(err => {
-      console.error("ERROR:", err);
-      submitBtn.disabled = false;
-      submitBtn.textContent = '✓ Submit Enquiry';
-      // Show error inside form instead of alert
-      const errBox = document.getElementById('submitError');
-      if (errBox) {
-        errBox.textContent = '⚠ Submission failed: ' + (err.message || 'Please check your connection and try again.');
-        errBox.style.display = 'block';
-      } else {
-        alert('Submission failed. Please check your connection and try again.');
-      }
-    });
+  document.getElementById('formCard').style.display = 'none';
+  document.getElementById('successScreen').classList.add('show');
+})
+.catch(err => {
+  console.error("ERROR:", err);
+  alert("Submission failed. Please try again.");
+});
   }
 </script>
 </body>
