@@ -1365,11 +1365,34 @@ function openCardPayment() {
   window.open('https://paystack.com/pay/vfg-onboarding', '_blank');
 }
 
-function confirmPayment() {
-  const payRef = document.getElementById('paymentRef').textContent;
-  const payMethod = getRadio('payMethod');
-  const errBox = document.getElementById('paymentError');
-  errBox.style.display = 'none';
+function confirmPayment(){
+  const payOption = document.querySelector('input[name="payOption"]:checked');
+  const proofFile = document.getElementById("proofFile").files[0];
+
+  let status = "pending";
+
+  if(payOption){
+    if(payOption.value === "pay_later"){
+      status = "pay_later";
+    }else{
+      status = proofFile ? "paid" : "pending_payment";
+    }
+  }
+
+  // DO NOT BLOCK ANYMORE
+  document.getElementById("paymentScreen").style.display = "none";
+  document.getElementById("successScreen").classList.add("show");
+
+  const msg = document.querySelector("#successScreen p");
+
+  if(status === "pay_later"){
+    msg.innerText = "Your enquiry has been submitted successfully. Our team will contact you to complete onboarding payment.";
+  }else if(status === "pending_payment"){
+    msg.innerText = "Your enquiry is submitted. Please complete your payment to activate your pilot.";
+  }else{
+    msg.innerText = "Your enquiry and payment have been received successfully.";
+  }
+}
 
   const btn = document.getElementById('confirmPayBtn');
   btn.disabled = true;
