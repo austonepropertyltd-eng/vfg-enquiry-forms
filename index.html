@@ -940,7 +940,27 @@ footer a{color:var(--green2);text-decoration:none}
   Confidential Enquiry Form · All submissions are secure and private
 </footer>
 </div><!-- /wrap -->
+let baseUSD = 299;
 
+const rates = {
+  USD: 1,
+  NGN: 1500,
+  GBP: 0.78
+};
+
+function updateCurrency(){
+  const currency = document.getElementById("currencySelect").value;
+  const amount = baseUSD * rates[currency];
+
+  let symbol = "$";
+  if(currency === "NGN") symbol = "₦";
+  if(currency === "GBP") symbol = "£";
+
+  document.querySelector(".fee-currency").textContent = symbol;
+  document.getElementById("onboardFeeAmount").textContent = Math.round(amount);
+
+  document.getElementById("usdtAmount").textContent = symbol + Math.round(amount);
+}
 <script>
 // ═══════════════════════════════════════════
 // CONSTANTS
