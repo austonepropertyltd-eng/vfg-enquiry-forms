@@ -789,10 +789,13 @@ footer a{color:var(--green2);text-decoration:none}
   </div>
 
   <div class="fee-card">
-    <div class="fee-label">Compulsory Onboarding Fee</div>
-    <div class="fee-amount"><span class="fee-currency">$</span><span id="onboardFeeAmount">299</span></div>
-    <div class="fee-desc" id="onboardFeeDesc">One-time setup & onboarding fee. Activates your 14-day pilot program with full platform access.</div>
-  </div>
+    <div style="margin-bottom:12px">
+  <select id="currencySelect" onchange="updateCurrency()" style="padding:10px;border-radius:10px;background:#111;color:#fff;width:100%">
+    <option value="USD">USD ($)</option>
+    <option value="NGN">NGN (₦)</option>
+    <option value="GBP">GBP (£)</option>
+  </select>
+</div>
 
   <div class="fee-includes">
     <div class="fee-include-item"><div class="fi-icon">⚙️</div><div class="fi-text"><strong>Platform Setup</strong>Full environment configured with your branding</div></div>
