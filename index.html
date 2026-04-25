@@ -810,11 +810,23 @@ footer a{color:var(--green2);text-decoration:none}
 
   <div class="divider-label">Choose Payment Method</div>
 
-  <div class="payment-ref-display">
-    <div class="pr-label">Payment Reference (use this when paying)</div>
-    <div class="pr-code" id="paymentRef">VFG-PAY-000000</div>
-    <div style="font-size:11px;color:var(--muted);margin-top:4px">Include this reference in your payment description</div>
-  </div>
+  <div class="payment-method-grid">
+  <label class="pay-method" onclick="selectPaymentOption(this,'now')">
+    <input type="radio" name="payOption" value="pay_now">
+    <div class="pm-icon">💳</div>
+    <div class="pm-name">Pay Now</div>
+    <div class="pm-detail">Complete onboarding now</div>
+  </label>
+
+  <label class="pay-method" onclick="selectPaymentOption(this,'later')">
+    <input type="radio" name="payOption" value="pay_later">
+    <div class="pm-icon">⏳</div>
+    <div class="pm-name">Pay Later</div>
+    <div class="pm-detail">Proceed without payment</div>
+  </label>
+</div>
+
+<div class="divider-label">Choose Payment Method</div>
 
   <div class="payment-method-grid">
     <label class="pay-method" onclick="selectPayMethod(this,'bank')">
