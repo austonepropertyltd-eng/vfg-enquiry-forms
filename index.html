@@ -961,6 +961,11 @@ function updateCurrency(){
 
   document.getElementById("usdtAmount").textContent = symbol + Math.round(amount);
 }
+
+  function selectPaymentOption(el,type){
+  document.querySelectorAll('.pay-method').forEach(e=>e.classList.remove('selected'));
+  el.classList.add('selected');
+}
 <script>
 // ═══════════════════════════════════════════
 // CONSTANTS
