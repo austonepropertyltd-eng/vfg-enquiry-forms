@@ -123,6 +123,8 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;hei
 .info-box strong{color:var(--gold)}
 .info-box.green{background:rgba(14,122,58,.08);border-color:rgba(14,122,58,.3)}
 .info-box.green strong{color:var(--green2)}
+.info-box.blue{background:rgba(59,130,246,.08);border-color:rgba(59,130,246,.3)}
+.info-box.blue strong{color:#60a5fa}
 .pilot-banner{background:linear-gradient(135deg,rgba(14,122,58,.15),rgba(245,197,24,.08));border:1px solid var(--green2);border-radius:14px;padding:18px 20px;margin-bottom:24px;display:flex;gap:14px;align-items:flex-start}
 .pilot-banner .pilot-icon{font-size:28px;flex-shrink:0}
 .pilot-banner h4{font-size:15px;font-weight:700;color:var(--gold);margin-bottom:4px}
@@ -149,8 +151,50 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;hei
 .btn-submit{background:linear-gradient(135deg,var(--gold2),var(--gold));color:var(--dark);flex:1;max-width:240px;box-shadow:0 6px 24px rgba(245,197,24,.3);font-weight:800}
 .btn-submit:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(245,197,24,.4)}
 .btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
-.btn-pay{background:linear-gradient(135deg,#16a34a,#15803d);color:#fff;width:100%;padding:16px;font-size:16px;font-weight:800;border-radius:14px;box-shadow:0 8px 28px rgba(14,122,58,.4);margin-top:16px}
+.btn-pay{background:linear-gradient(135deg,#16a34a,#15803d);color:#fff;width:100%;padding:16px;font-size:16px;font-weight:800;border-radius:14px;box-shadow:0 8px 28px rgba(14,122,58,.4);margin-top:16px;cursor:pointer;border:none;font-family:'Outfit',sans-serif;transition:all .2s}
 .btn-pay:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(14,122,58,.5)}
+
+/* ══════════════════════════════════════════
+   PAYMENT OPTIONAL TOGGLE — NEW
+══════════════════════════════════════════ */
+.pay-timing-wrap{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}
+@media(max-width:480px){.pay-timing-wrap{grid-template-columns:1fr}}
+.pay-timing-card{position:relative;border-radius:16px;padding:20px 18px 18px;cursor:pointer;transition:all .25s;border:2px solid var(--border);background:var(--dark2);text-align:center;overflow:hidden}
+.pay-timing-card input[type="radio"]{display:none}
+.pay-timing-card:hover{border-color:var(--green)}
+.pay-timing-card.active-now{border-color:var(--green);background:rgba(14,122,58,.12);box-shadow:0 0 24px rgba(14,122,58,.22)}
+.pay-timing-card.active-later{border-color:var(--gold2);background:rgba(245,197,24,.06);box-shadow:0 0 24px rgba(245,197,24,.12)}
+.pay-timing-card .pt-icon{font-size:34px;margin-bottom:10px;display:block}
+.pay-timing-card .pt-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:var(--white);margin-bottom:4px}
+.pay-timing-card .pt-sub{font-size:12px;color:var(--muted);line-height:1.5}
+.pay-timing-card.active-now .pt-title{color:var(--green2)}
+.pay-timing-card.active-later .pt-title{color:var(--gold)}
+.timing-badge{position:absolute;top:10px;right:10px;font-size:10px;font-weight:800;padding:3px 9px;border-radius:20px;letter-spacing:.5px}
+.badge-green{background:rgba(22,163,74,.2);color:var(--green2);border:1px solid rgba(22,163,74,.3)}
+.badge-gold{background:rgba(245,197,24,.15);color:var(--gold);border:1px solid rgba(245,197,24,.3)}
+
+/* ══════════════════════════════════════════
+   CURRENCY CONVERTER — NEW
+══════════════════════════════════════════ */
+.currency-converter{background:linear-gradient(135deg,rgba(14,122,58,.1),rgba(245,197,24,.05));border:1px solid var(--green2);border-radius:16px;padding:22px;margin-bottom:20px}
+.currency-converter h4{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--green2);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.currency-converter h4::before{content:'⚡'}
+.currency-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.currency-tab{padding:6px 14px;border-radius:50px;font-size:12px;font-weight:700;cursor:pointer;border:1.5px solid var(--border);background:var(--dark2);color:var(--muted);transition:all .2s;letter-spacing:.5px}
+.currency-tab:hover{border-color:var(--green);color:var(--text)}
+.currency-tab.active{border-color:var(--green);background:rgba(14,122,58,.2);color:var(--white)}
+.currency-display{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px}
+@media(max-width:500px){.currency-display{grid-template-columns:1fr 1fr}}
+.currency-tile{background:var(--dark2);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;transition:all .2s}
+.currency-tile.highlight{border-color:var(--gold2);background:rgba(245,197,24,.08)}
+.currency-tile .ct-code{font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:4px}
+.currency-tile .ct-amount{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;color:var(--gold);line-height:1.1}
+.currency-tile .ct-name{font-size:10px;color:var(--muted);margin-top:2px}
+.currency-tile.highlight .ct-amount{color:var(--white);font-size:26px}
+.converter-note{font-size:11px;color:var(--muted);text-align:center;line-height:1.5}
+.converter-note span{color:var(--green2)}
+.rate-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(14,122,58,.15);border:1px solid rgba(14,122,58,.3);border-radius:20px;padding:3px 10px;font-size:11px;color:var(--green2);font-weight:600;margin-left:8px}
+.rate-badge.loading{color:var(--muted);border-color:var(--border)}
 
 /* ONBOARDING PAYMENT SCREEN */
 .payment-screen{display:none;animation:fadeUp .5s ease forwards}
@@ -158,8 +202,15 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;hei
 .onboard-hero{text-align:center;padding:20px 0 28px}
 .onboard-hero h2{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--gold);letter-spacing:2px}
 .onboard-hero p{font-size:14px;color:var(--muted);margin-top:6px}
+
+/* PAY LATER SCREEN */
+.pay-later-screen{display:none}
+.pay-later-screen.show{display:block}
+.paylater-card{background:linear-gradient(135deg,rgba(245,197,24,.08),rgba(14,122,58,.06));border:2px solid var(--gold2);border-radius:18px;padding:28px;text-align:center;margin-bottom:20px}
+.paylater-card h3{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--gold);letter-spacing:2px;margin-bottom:8px}
+.paylater-card p{font-size:14px;color:var(--muted);line-height:1.6;max-width:480px;margin:0 auto}
+
 .fee-card{background:linear-gradient(135deg,var(--green3),#071a0c);border:2px solid var(--green2);border-radius:18px;padding:28px;text-align:center;margin-bottom:20px;position:relative;overflow:hidden}
-.fee-card::before{content:'REQUIRED';position:absolute;top:14px;right:-20px;background:var(--gold);color:var(--dark);font-size:10px;font-weight:800;letter-spacing:1px;padding:4px 32px;transform:rotate(45deg) translateX(10px)}
 .fee-card .fee-label{font-size:12px;color:var(--green2);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
 .fee-card .fee-amount{font-family:'Bebas Neue',sans-serif;font-size:56px;color:var(--gold);line-height:1;letter-spacing:2px}
 .fee-card .fee-currency{font-size:22px;vertical-align:top;margin-top:10px;display:inline-block}
@@ -192,6 +243,7 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;hei
 .payment-ref-display .pr-label{font-size:11px;color:var(--muted);margin-bottom:4px;letter-spacing:1px;text-transform:uppercase}
 .payment-ref-display .pr-code{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--gold);letter-spacing:3px}
 .upload-proof{margin-bottom:16px}
+.optional-label{font-size:11px;color:var(--muted);font-style:italic;margin-left:6px;font-weight:400;letter-spacing:0}
 
 /* SUCCESS */
 .success-screen{display:none;text-align:center;padding:40px 20px;animation:fadeUp .5s ease forwards}
@@ -261,7 +313,6 @@ footer a{color:var(--green2);text-decoration:none}
   <div class="field">
     <label>Select the product(s) you need <span class="req">*</span></label>
     <div class="product-grid" id="productGrid">
-
       <label class="product-card" onclick="selectProduct(this)">
         <input type="checkbox" name="products" value="Pools & Lotto Platform (PoolsMaxPro)">
         <div class="check-mark">✓</div>
@@ -270,7 +321,6 @@ footer a{color:var(--green2);text-decoration:none}
         <div class="p-desc">Full football pools & lotto platform with POS agent network, ticket printing & results management</div>
         <span class="p-tag" style="background:rgba(245,197,24,.15);color:var(--gold)">POOLS</span>
       </label>
-
       <label class="product-card" onclick="selectProduct(this)">
         <input type="checkbox" name="products" value="Cooplink – Cooperative Management">
         <div class="check-mark">✓</div>
@@ -279,7 +329,6 @@ footer a{color:var(--green2);text-decoration:none}
         <div class="p-desc">Cooperative society management — member savings, loans, contributions & financial reporting</div>
         <span class="p-tag" style="background:rgba(59,130,246,.15);color:#60a5fa">FINTECH</span>
       </label>
-
       <label class="product-card" onclick="selectProduct(this)">
         <input type="checkbox" name="products" value="Finbridge – Financial Services Platform">
         <div class="check-mark">✓</div>
@@ -288,7 +337,6 @@ footer a{color:var(--green2);text-decoration:none}
         <div class="p-desc">Digital financial services — transfers, wallets, micro-lending, agency banking & payment processing</div>
         <span class="p-tag" style="background:rgba(59,130,246,.15);color:#60a5fa">FINTECH</span>
       </label>
-
       <label class="product-card" onclick="selectProduct(this)">
         <input type="checkbox" name="products" value="Edubridge – Education Management Platform">
         <div class="check-mark">✓</div>
@@ -297,7 +345,6 @@ footer a{color:var(--green2);text-decoration:none}
         <div class="p-desc">School & learning management — student portal, fees, e-learning, results & parent communication</div>
         <span class="p-tag" style="background:rgba(139,92,246,.15);color:#a78bfa">EDTECH</span>
       </label>
-
       <label class="product-card" onclick="selectProduct(this)">
         <input type="checkbox" name="products" value="DistroOs – Distribution Management System">
         <div class="check-mark">✓</div>
@@ -306,7 +353,6 @@ footer a{color:var(--green2);text-decoration:none}
         <div class="p-desc">Distribution & supply chain management — orders, delivery tracking, agent network & inventory</div>
         <span class="p-tag" style="background:rgba(249,115,22,.15);color:#fb923c">SUPPLY</span>
       </label>
-
       <label class="product-card" onclick="selectProduct(this)">
         <input type="checkbox" name="products" value="PharmLink – Pharmacy Management System">
         <div class="check-mark">✓</div>
@@ -315,7 +361,6 @@ footer a{color:var(--green2);text-decoration:none}
         <div class="p-desc">Pharmacy POS, inventory, prescription management, drug database & multi-branch operations</div>
         <span class="p-tag" style="background:rgba(20,184,166,.15);color:#2dd4bf">HEALTH</span>
       </label>
-
       <label class="product-card" onclick="selectProduct(this)">
         <input type="checkbox" name="products" value="RetailPro – Retail & POS Management">
         <div class="check-mark">✓</div>
@@ -324,7 +369,6 @@ footer a{color:var(--green2);text-decoration:none}
         <div class="p-desc">Complete retail solution — POS, inventory, staff, loyalty, multi-store dashboard & e-commerce</div>
         <span class="p-tag" style="background:rgba(249,115,22,.15);color:#fb923c">RETAIL</span>
       </label>
-
       <label class="product-card" onclick="selectProduct(this)">
         <input type="checkbox" name="products" value="HotelPro – Hotel & Hospitality Management">
         <div class="check-mark">✓</div>
@@ -333,7 +377,6 @@ footer a{color:var(--green2);text-decoration:none}
         <div class="p-desc">Hotel PMS — bookings, room management, restaurant POS, housekeeping & guest portal</div>
         <span class="p-tag" style="background:rgba(139,92,246,.15);color:#a78bfa">HOSPITALITY</span>
       </label>
-
       <label class="product-card" onclick="selectProduct(this)">
         <input type="checkbox" name="products" value="FarmTrack – Agricultural Management Platform">
         <div class="check-mark">✓</div>
@@ -342,7 +385,6 @@ footer a{color:var(--green2);text-decoration:none}
         <div class="p-desc">Farm management — crop tracking, livestock, input management, off-taker connections & reporting</div>
         <span class="p-tag" style="background:rgba(14,122,58,.2);color:var(--green2)">AGRITECH</span>
       </label>
-
       <label class="product-card" onclick="selectProduct(this)">
         <input type="checkbox" name="products" value="TaxReacon – Tax & Compliance Platform">
         <div class="check-mark">✓</div>
@@ -351,16 +393,14 @@ footer a{color:var(--green2);text-decoration:none}
         <div class="p-desc">Tax management & compliance — filing, reconciliation, audit trail, multi-jurisdiction support</div>
         <span class="p-tag" style="background:rgba(59,130,246,.15);color:#60a5fa">COMPLIANCE</span>
       </label>
-
       <label class="product-card" onclick="selectProduct(this)">
         <input type="checkbox" name="products" value="StockVault – Warehouse Operations System">
         <div class="check-mark">✓</div>
         <div class="p-icon">🏭</div>
         <div class="p-name">StockVault</div>
-        <div class="p-desc">Warehouse operations — inflow/outflow tracking, inter-warehouse transfers, supply management, dispatch, delivery & full account reconciliation</div>
+        <div class="p-desc">Warehouse operations — inflow/outflow tracking, transfers, supply management, dispatch & reconciliation</div>
         <span class="p-tag" style="background:rgba(249,115,22,.15);color:#fb923c">WAREHOUSE</span>
       </label>
-
     </div>
     <span class="err-msg" id="e-products">Please select at least one product</span>
   </div>
@@ -380,7 +420,6 @@ footer a{color:var(--green2);text-decoration:none}
 <div class="section" id="sec2">
   <div class="section-title">Contact & Branding</div>
   <div class="section-sub">Your details and company branding assets for platform setup</div>
-
   <div class="grid-2">
     <div class="field">
       <label>First Name <span class="req">*</span></label>
@@ -410,12 +449,9 @@ footer a{color:var(--green2);text-decoration:none}
       <label>Your Role / Position <span class="req">*</span></label>
       <select id="role">
         <option value="">Select role...</option>
-        <option>Promoter / Owner</option>
-        <option>CEO / MD</option>
-        <option>Business Development Manager</option>
-        <option>Technical Director</option>
-        <option>Investor / Partner</option>
-        <option>Government / Agency Representative</option>
+        <option>Promoter / Owner</option><option>CEO / MD</option>
+        <option>Business Development Manager</option><option>Technical Director</option>
+        <option>Investor / Partner</option><option>Government / Agency Representative</option>
         <option>Other</option>
       </select>
       <span class="err-msg" id="e-role">Please select your role</span>
@@ -427,7 +463,7 @@ footer a{color:var(--green2);text-decoration:none}
     </div>
     <div class="field full">
       <label>Company Registered Address <span class="req">*</span></label>
-      <input type="text" id="address" placeholder="Full registered address (used for branding & legal documents)">
+      <input type="text" id="address" placeholder="Full registered address">
       <span class="err-msg" id="e-address">Address is required for branding</span>
     </div>
     <div class="field">
@@ -446,8 +482,7 @@ footer a{color:var(--green2);text-decoration:none}
         <option>South Africa</option><option>Uganda</option><option>Tanzania</option>
         <option>Cameroon</option><option>Côte d'Ivoire</option><option>Senegal</option>
         <option>Rwanda</option><option>Ethiopia</option><option>Zambia</option>
-        <option>Zimbabwe</option><option>Other African Country</option>
-        <option>Outside Africa</option>
+        <option>Zimbabwe</option><option>Other African Country</option><option>Outside Africa</option>
       </select>
       <span class="err-msg" id="e-country">Please select a country</span>
     </div>
@@ -456,13 +491,10 @@ footer a{color:var(--green2);text-decoration:none}
       <input type="url" id="website" placeholder="https://yourcompany.com">
     </div>
   </div>
-
   <div class="divider-label">Branding Assets</div>
-
   <div class="info-box green">
     <strong>📌 Why we need these:</strong> Your logo and brand colours are used to customise the platform interface, mobile apps, receipts, tickets and marketing materials exclusively for your brand.
   </div>
-
   <div class="grid-2">
     <div class="field">
       <label>Upload Company Logo <span class="req">*</span></label>
@@ -484,7 +516,6 @@ footer a{color:var(--green2);text-decoration:none}
       </div>
     </div>
   </div>
-
   <div class="grid-2">
     <div class="field">
       <label>Primary Brand Colour</label>
@@ -501,12 +532,10 @@ footer a{color:var(--green2);text-decoration:none}
       </div>
     </div>
   </div>
-
   <div class="field">
     <label>Brand Name for Platform (if different from company name)</label>
     <input type="text" id="brandName" placeholder="e.g. LuckyBet Pro — the name shown on your platform">
   </div>
-
   <div class="btn-row">
     <button class="btn btn-prev" onclick="prev(2)">← Back</button>
     <button class="btn btn-next" onclick="next(2)">Next — Business Details →</button>
@@ -517,7 +546,6 @@ footer a{color:var(--green2);text-decoration:none}
 <div class="section" id="sec3">
   <div class="section-title">Business Details</div>
   <div class="section-sub">Help us understand your business so we can build the right solution</div>
-
   <div class="field">
     <label>Business Stage <span class="req">*</span></label>
     <div class="radio-group">
@@ -529,7 +557,6 @@ footer a{color:var(--green2);text-decoration:none}
     </div>
     <span class="err-msg" id="e-bizStage">Please select your business stage</span>
   </div>
-
   <div class="field">
     <label>Regulatory / License Status</label>
     <div class="radio-group">
@@ -539,7 +566,6 @@ footer a{color:var(--green2);text-decoration:none}
       <label class="radio-pill"><input type="radio" name="license" value="Not required in our region"><span>Not Required</span></label>
     </div>
   </div>
-
   <div class="grid-2">
     <div class="field">
       <label>Expected Number of Users / Agents <span class="req">*</span></label>
@@ -574,17 +600,14 @@ footer a{color:var(--green2);text-decoration:none}
       </div>
     </div>
   </div>
-
   <div class="field">
     <label>Describe Your Business / Project</label>
-    <textarea id="bizDesc" placeholder="Tell us about your vision, target customers, how you plan to operate, competitors, unique value proposition..."></textarea>
+    <textarea id="bizDesc" placeholder="Tell us about your vision, target customers, how you plan to operate..."></textarea>
   </div>
-
   <div class="field">
     <label>Are There Any Specific Challenges You're Trying to Solve?</label>
-    <textarea id="challenges" placeholder="e.g. Manual processes, lack of agent tracking, no reporting, customers demand mobile access..." style="min-height:80px"></textarea>
+    <textarea id="challenges" placeholder="e.g. Manual processes, lack of agent tracking, no reporting..." style="min-height:80px"></textarea>
   </div>
-
   <div class="btn-row">
     <button class="btn btn-prev" onclick="prev(3)">← Back</button>
     <button class="btn btn-next" onclick="next(3)">Next — Platform Features →</button>
@@ -595,7 +618,6 @@ footer a{color:var(--green2);text-decoration:none}
 <div class="section" id="sec4">
   <div class="section-title">Platform Requirements</div>
   <div class="section-sub">What features and channels do you need?</div>
-
   <div class="field">
     <label>Access Channels Needed <span class="req">*</span></label>
     <div class="check-group">
@@ -610,9 +632,7 @@ footer a{color:var(--green2);text-decoration:none}
     </div>
     <span class="err-msg" id="e-channels">Please select at least one channel</span>
   </div>
-
   <div class="divider-label">Core Features</div>
-
   <div class="field">
     <label>Select All Features You Need</label>
     <div class="check-group">
@@ -630,7 +650,6 @@ footer a{color:var(--green2);text-decoration:none}
       <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" name="features" value="Custom Branding & White-label"><div class="box"></div><span class="text">🎨 Custom Branding</span></label>
     </div>
   </div>
-
   <div class="field">
     <label>POS Device Type (if applicable)</label>
     <div class="radio-group">
@@ -642,21 +661,16 @@ footer a{color:var(--green2);text-decoration:none}
       <label class="radio-pill"><input type="radio" name="posDevice" value="No POS needed"><span>No POS</span></label>
     </div>
   </div>
-
   <div class="field">
     <label>How Did You Hear About VFG Technology?</label>
     <select id="referral">
       <option value="">Select...</option>
-      <option>Referral from existing client</option>
-      <option>Social Media (Facebook / Instagram)</option>
+      <option>Referral from existing client</option><option>Social Media (Facebook / Instagram)</option>
       <option>WhatsApp</option><option>Google Search</option>
-      <option>Trade Show / Conference</option>
-      <option>Industry Forum / Association</option>
-      <option>Direct contact from VFG</option>
-      <option>Other</option>
+      <option>Trade Show / Conference</option><option>Industry Forum / Association</option>
+      <option>Direct contact from VFG</option><option>Other</option>
     </select>
   </div>
-
   <div class="btn-row">
     <button class="btn btn-prev" onclick="prev(4)">← Back</button>
     <button class="btn btn-next" onclick="next(4)">Next — Budget & Timeline →</button>
@@ -667,14 +681,12 @@ footer a{color:var(--green2);text-decoration:none}
 <div class="section" id="sec5">
   <div class="section-title">Budget & Timeline</div>
   <div class="section-sub">Help us understand your investment level and preferred commercial arrangement</div>
-
   <div class="field">
     <label>Estimated Development Budget (USD) <span class="req">*</span></label>
     <div class="range-value" id="budgetDisplay">$5,000 – $15,000</div>
     <input type="range" id="budgetRange" min="0" max="6" value="2" oninput="updateBudget(this)">
     <div class="range-labels"><span>Under $2k</span><span>$100k+</span></div>
   </div>
-
   <div class="field">
     <label>Preferred Payment / Commercial Model <span class="req">*</span></label>
     <div class="radio-group">
@@ -690,7 +702,6 @@ footer a{color:var(--green2);text-decoration:none}
       <span id="paymentNoteText"></span>
     </div>
   </div>
-
   <div class="field">
     <label>Preferred Development Timeline</label>
     <div class="radio-group">
@@ -700,7 +711,6 @@ footer a{color:var(--green2);text-decoration:none}
       <label class="radio-pill"><input type="radio" name="timeline" value="Flexible"><span>Flexible</span></label>
     </div>
   </div>
-
   <div class="field">
     <label>Do You Have a Technical Team?</label>
     <div class="radio-group">
@@ -709,7 +719,6 @@ footer a{color:var(--green2);text-decoration:none}
       <label class="radio-pill"><input type="radio" name="hasTech" value="Partially — need VFG support"><span>Partial</span></label>
     </div>
   </div>
-
   <div class="field">
     <label>Preferred Hosting</label>
     <div class="radio-group">
@@ -718,7 +727,6 @@ footer a{color:var(--green2);text-decoration:none}
       <label class="radio-pill"><input type="radio" name="hosting" value="No preference"><span>No Preference</span></label>
     </div>
   </div>
-
   <div class="field">
     <label>Custom Branding Requirement</label>
     <div class="radio-group">
@@ -727,12 +735,10 @@ footer a{color:var(--green2);text-decoration:none}
       <label class="radio-pill"><input type="radio" name="branding" value="VFG default branding is fine"><span>Default OK</span></label>
     </div>
   </div>
-
   <div class="field">
     <label>Additional Notes / Special Requirements</label>
-    <textarea id="additionalNotes" placeholder="Any integrations, compliance requirements, languages needed, specific markets, partnerships, or anything else we should know..."></textarea>
+    <textarea id="additionalNotes" placeholder="Any integrations, compliance requirements, languages needed, specific markets, partnerships..."></textarea>
   </div>
-
   <div class="btn-row">
     <button class="btn btn-prev" onclick="prev(5)">← Back</button>
     <button class="btn btn-next" onclick="next(5)">Review Submission →</button>
@@ -743,27 +749,22 @@ footer a{color:var(--green2);text-decoration:none}
 <div class="section" id="sec6">
   <div class="section-title">Review & Submit</div>
   <div class="section-sub">Please review your details before submitting your enquiry</div>
-
   <div class="info-box">
     <strong>📋 What happens after submission:</strong><br>
-    1. VFG consultant reviews your enquiry<br>
-    2. <strong>Onboarding fee payment screen</strong> appears — this is required to activate your 14-day pilot<br>
-    3. You'll receive a proposal + pilot access within <strong>24–48 hours</strong>
+    1. VFG consultant reviews your enquiry within <strong>24 hours</strong><br>
+    2. You choose whether to pay the onboarding fee now or later<br>
+    3. You'll receive a full proposal & pilot access details by email
   </div>
-
   <div class="summary-grid" id="summaryGrid"></div>
-
   <div class="field" style="margin-top:20px">
     <label class="check-item" onclick="toggleCheck(this)" style="border-radius:12px">
       <input type="checkbox" id="agreeTerms">
       <div class="box"></div>
-      <span class="text" style="font-size:13px;line-height:1.5">I confirm the information is accurate. I agree to be contacted by VFG Technology Ltd. I understand a compulsory onboarding fee applies for all products, which activates the 14-day free pilot program.</span>
+      <span class="text" style="font-size:13px;line-height:1.5">I confirm the information is accurate. I agree to be contacted by VFG Technology Ltd regarding my enquiry.</span>
     </label>
     <span class="err-msg" id="e-terms">You must agree to continue</span>
   </div>
-
   <div id="submitError"></div>
-
   <div class="btn-row">
     <button class="btn btn-prev" onclick="prev(6)">← Back</button>
     <button class="btn btn-submit" id="submitBtn" onclick="submitForm()">✓ Submit Enquiry</button>
@@ -776,143 +777,239 @@ footer a{color:var(--green2);text-decoration:none}
 <div class="form-card payment-screen" id="paymentScreen">
   <div class="onboard-hero">
     <h2>🎉 Enquiry Received!</h2>
-    <p>Your reference: <span id="enquiryRefCode" style="color:var(--gold);font-weight:700">VFG-000000</span></p>
-    <p style="margin-top:6px">Complete your onboarding payment to activate your <strong style="color:var(--green2)">14-day free pilot</strong></p>
+    <p>Reference: <span id="enquiryRefCode" style="color:var(--gold);font-weight:700">VFG-000000</span></p>
+    <p style="margin-top:6px;color:var(--muted);font-size:14px">Now choose your onboarding fee preference</p>
   </div>
 
   <div class="pilot-banner">
     <div class="pilot-icon">🚀</div>
     <div>
       <h4>14-Day Free Pilot Included</h4>
-      <p>Your onboarding fee activates full platform access for <strong style="color:var(--gold)">14 days</strong> — test every feature with real data, real users and full VFG support before committing to full deployment.</p>
+      <p>Your onboarding fee activates full platform access for <strong style="color:var(--gold)">14 days</strong> — test every feature with real data and full VFG support before committing to full deployment.</p>
     </div>
   </div>
 
-  <div class="fee-card">
-    <div class="fee-label">Compulsory Onboarding Fee</div>
-    <div class="fee-amount"><span class="fee-currency">$</span><span id="onboardFeeAmount">299</span></div>
-    <div class="fee-desc" id="onboardFeeDesc">One-time setup & onboarding fee. Activates your 14-day pilot program with full platform access.</div>
-  </div>
-
-  <div class="fee-includes">
-    <div class="fee-include-item"><div class="fi-icon">⚙️</div><div class="fi-text"><strong>Platform Setup</strong>Full environment configured with your branding</div></div>
-    <div class="fee-include-item"><div class="fi-icon">🎨</div><div class="fi-text"><strong>Brand Integration</strong>Your logo, colours & name applied across the platform</div></div>
-    <div class="fee-include-item"><div class="fi-icon">🧑‍🏫</div><div class="fi-text"><strong>Onboarding Training</strong>2-hour walkthrough with your team via Zoom/WhatsApp</div></div>
-    <div class="fee-include-item"><div class="fi-icon">🛡️</div><div class="fi-text"><strong>14-Day Pilot Access</strong>Full platform access — test before full commitment</div></div>
-    <div class="fee-include-item"><div class="fi-icon">📞</div><div class="fi-text"><strong>Priority Support</strong>Dedicated WhatsApp & email support during pilot</div></div>
-    <div class="fee-include-item"><div class="fi-icon">📋</div><div class="fi-text"><strong>Custom Proposal</strong>Detailed development scope, timeline & full pricing</div></div>
-  </div>
-
-  <!-- Monthly/Milestone/Rev Share extra info -->
-  <div id="payModelNote" style="display:none" class="info-box">
-    <strong id="payModelTitle"></strong><br><span id="payModelText"></span>
-  </div>
-
-  <div class="divider-label">Choose Payment Method</div>
-
-  <div class="payment-ref-display">
-    <div class="pr-label">Payment Reference (use this when paying)</div>
-    <div class="pr-code" id="paymentRef">VFG-PAY-000000</div>
-    <div style="font-size:11px;color:var(--muted);margin-top:4px">Include this reference in your payment description</div>
-  </div>
-
-  <div class="payment-method-grid">
-    <label class="pay-method" onclick="selectPayMethod(this,'bank')">
-      <input type="radio" name="payMethod" value="Bank Transfer">
-      <div class="pm-icon">🏦</div>
-      <div class="pm-name">Bank Transfer</div>
-      <div class="pm-detail">Direct bank transfer (NGN / USD)</div>
-    </label>
-    <label class="pay-method" onclick="selectPayMethod(this,'card')">
-      <input type="radio" name="payMethod" value="Card Payment">
-      <div class="pm-icon">💳</div>
-      <div class="pm-name">Card Payment</div>
-      <div class="pm-detail">Visa, Mastercard, Verve</div>
-    </label>
-    <label class="pay-method" onclick="selectPayMethod(this,'crypto')">
-      <input type="radio" name="payMethod" value="USDT / Crypto">
-      <div class="pm-icon">₿</div>
-      <div class="pm-name">USDT / Crypto</div>
-      <div class="pm-detail">USDT TRC-20 or BEP-20</div>
-    </label>
-    <label class="pay-method" onclick="selectPayMethod(this,'mobile')">
-      <input type="radio" name="payMethod" value="Mobile Money">
-      <div class="pm-icon">📲</div>
-      <div class="pm-name">Mobile Money</div>
-      <div class="pm-detail">MTN, Airtel, M-Pesa</div>
-    </label>
-  </div>
-
-  <!-- Bank details -->
-  <div class="bank-details" id="bankDetails">
-    <h4>Nigerian Bank Account (NGN)</h4>
-    <div class="bank-row"><span class="bk-label">Bank Name</span><span class="bk-value" onclick="copyText(this)">Guaranty Trust Bank (GTB)</span></div>
-    <div class="bank-row"><span class="bk-label">Account Name</span><span class="bk-value" onclick="copyText(this)">VFG Technology Limited</span></div>
-    <div class="bank-row"><span class="bk-label">Account Number</span><span class="bk-value" onclick="copyText(this)">0123456789</span></div>
-    <div class="bank-row"><span class="bk-label">Amount (NGN)</span><span class="bk-value" id="ngnAmount" style="color:var(--gold)">Contact us for NGN rate</span></div>
-    <div class="copy-hint">Tap any value to copy · Use payment ref: <span id="bankPayRef" style="color:var(--gold)">VFG-PAY-000000</span></div>
-  </div>
-
-  <!-- Card payment -->
-  <div class="bank-details" id="cardDetails">
-    <h4>Card Payment</h4>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Click the button below to be redirected to our secure payment gateway (Flutterwave / Paystack)</p>
-    <button class="btn btn-pay" onclick="openCardPayment()">💳 Pay Now via Card</button>
-  </div>
-
-  <!-- Crypto details -->
-  <div class="bank-details" id="cryptoDetails">
-    <h4>USDT Wallet Address</h4>
-    <div class="bank-row"><span class="bk-label">Network</span><span class="bk-value">TRC-20 (Tron) or BEP-20 (BSC)</span></div>
-    <div class="bank-row"><span class="bk-label">Wallet Address</span><span class="bk-value" onclick="copyText(this)" style="font-size:12px;word-break:break-all">TXxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span></div>
-    <div class="bank-row"><span class="bk-label">Amount</span><span class="bk-value" style="color:var(--gold)" id="usdtAmount">$299 USDT</span></div>
-    <div class="copy-hint">Tap address to copy · Send exact amount</div>
-  </div>
-
-  <!-- Mobile money details -->
-  <div class="bank-details" id="mobileDetails">
-    <h4>Mobile Money</h4>
-    <div class="bank-row"><span class="bk-label">MTN MoMo (Nigeria)</span><span class="bk-value" onclick="copyText(this)">+234 807 775 2526</span></div>
-    <div class="bank-row"><span class="bk-label">Account Name</span><span class="bk-value">VFG Technology</span></div>
-    <div class="bank-row"><span class="bk-label">Amount</span><span class="bk-value" style="color:var(--gold)">Contact us for local rate</span></div>
-    <div class="copy-hint">Send payment then upload proof below</div>
-  </div>
-
-  <div class="divider-label">Upload Payment Proof</div>
-
-  <div class="field upload-proof">
-    <label>Upload Payment Receipt / Screenshot <span class="req">*</span></label>
-    <div class="file-upload">
-      <input type="file" id="proofFile" accept="image/*,.pdf" onchange="handleFileUpload('proofFile','proofFileName','')">
-      <div class="upload-icon">📎</div>
-      <p>Upload your payment screenshot or receipt<br><strong>PNG, JPG, PDF</strong> accepted</p>
-      <div class="file-name" id="proofFileName"></div>
+  <!-- ★ PAY NOW / PAY LATER TOGGLE ★ -->
+  <div style="margin-bottom:24px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px">How would you like to handle the onboarding fee?</div>
+    <div class="pay-timing-wrap">
+      <label class="pay-timing-card" id="cardPayNow" onclick="setPayTiming('now')">
+        <input type="radio" name="payTiming" value="now">
+        <span class="timing-badge badge-green">RECOMMENDED</span>
+        <span class="pt-icon">⚡</span>
+        <div class="pt-title">Pay Now</div>
+        <div class="pt-sub">Pay the onboarding fee today and get your pilot activated within 2–4 hours</div>
+      </label>
+      <label class="pay-timing-card" id="cardPayLater" onclick="setPayTiming('later')">
+        <input type="radio" name="payTiming" value="later">
+        <span class="timing-badge badge-gold">FLEXIBLE</span>
+        <span class="pt-icon">📅</span>
+        <div class="pt-title">Pay Later</div>
+        <div class="pt-sub">Submit your enquiry now, pay when you're ready. VFG will send an invoice.</div>
+      </label>
     </div>
   </div>
 
-  <div id="paymentError" style="display:none;background:rgba(239,68,68,.1);border:1px solid #ef4444;border-radius:10px;padding:12px 16px;color:#f87171;font-size:13px;margin-bottom:12px"></div>
+  <!-- PAY NOW SECTION -->
+  <div id="payNowSection" style="display:none">
 
-  <button class="btn btn-pay" id="confirmPayBtn" onclick="confirmPayment()">✓ Confirm Payment Submitted</button>
+    <!-- ★ CURRENCY CONVERTER ★ -->
+    <div class="currency-converter">
+      <h4>Onboarding Fee <span class="rate-badge loading" id="rateBadge">Loading rates...</span></h4>
+      <div class="currency-tabs" id="currencyTabs">
+        <div class="currency-tab active" onclick="selectCurrency('USD','$')">🇺🇸 USD</div>
+        <div class="currency-tab" onclick="selectCurrency('NGN','₦')">🇳🇬 NGN</div>
+        <div class="currency-tab" onclick="selectCurrency('GHS','GH₵')">🇬🇭 GHS</div>
+        <div class="currency-tab" onclick="selectCurrency('KES','KSh')">🇰🇪 KES</div>
+        <div class="currency-tab" onclick="selectCurrency('ZAR','R')">🇿🇦 ZAR</div>
+        <div class="currency-tab" onclick="selectCurrency('GBP','£')">🇬🇧 GBP</div>
+        <div class="currency-tab" onclick="selectCurrency('EUR','€')">🇪🇺 EUR</div>
+        <div class="currency-tab" onclick="selectCurrency('USDT','₮')">₿ USDT</div>
+      </div>
+      <div class="currency-display" id="currencyDisplay">
+        <div class="currency-tile highlight">
+          <div class="ct-code" id="activeCurrCode">USD</div>
+          <div class="ct-amount" id="activeCurrAmt">$299</div>
+          <div class="ct-name" id="activeCurrName">US Dollar</div>
+        </div>
+        <div class="currency-tile">
+          <div class="ct-code">NGN</div>
+          <div class="ct-amount" id="ngnTile">₦—</div>
+          <div class="ct-name">Nigerian Naira</div>
+        </div>
+        <div class="currency-tile">
+          <div class="ct-code">GHS</div>
+          <div class="ct-amount" id="ghsTile">GH₵—</div>
+          <div class="ct-name">Ghanaian Cedi</div>
+        </div>
+        <div class="currency-tile">
+          <div class="ct-code">KES</div>
+          <div class="ct-amount" id="kesTile">KSh—</div>
+          <div class="ct-name">Kenyan Shilling</div>
+        </div>
+        <div class="currency-tile">
+          <div class="ct-code">GBP</div>
+          <div class="ct-amount" id="gbpTile">£—</div>
+          <div class="ct-name">British Pound</div>
+        </div>
+        <div class="currency-tile">
+          <div class="ct-code">EUR</div>
+          <div class="ct-amount" id="eurTile">€—</div>
+          <div class="ct-name">Euro</div>
+        </div>
+      </div>
+      <div class="converter-note">
+        Rates are <span>live from open exchange APIs</span> · Tap a currency tab to set it as your preferred payment currency · USD equivalent always accepted
+      </div>
+    </div>
 
-  <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:16px">
-    After confirmation, VFG will verify your payment and activate your pilot within <strong style="color:var(--green2)">2–4 hours</strong><br>
-    Questions? WhatsApp: <a href="https://wa.me/2348077752526" style="color:var(--green2)">+234 8077752526</a>
+    <div class="fee-card">
+      <div class="fee-label">Onboarding Fee (Optional — Pay When Ready)</div>
+      <div class="fee-amount"><span class="fee-currency" id="feeCurrSymbol">$</span><span id="onboardFeeAmount">299</span></div>
+      <div class="fee-desc" id="onboardFeeDesc">One-time setup & onboarding fee. Activates your 14-day pilot program with full platform access.</div>
+    </div>
+
+    <div class="fee-includes">
+      <div class="fee-include-item"><div class="fi-icon">⚙️</div><div class="fi-text"><strong>Platform Setup</strong>Full environment configured with your branding</div></div>
+      <div class="fee-include-item"><div class="fi-icon">🎨</div><div class="fi-text"><strong>Brand Integration</strong>Your logo, colours & name applied across the platform</div></div>
+      <div class="fee-include-item"><div class="fi-icon">🧑‍🏫</div><div class="fi-text"><strong>Onboarding Training</strong>2-hour walkthrough with your team via Zoom/WhatsApp</div></div>
+      <div class="fee-include-item"><div class="fi-icon">🛡️</div><div class="fi-text"><strong>14-Day Pilot Access</strong>Full platform access — test before full commitment</div></div>
+      <div class="fee-include-item"><div class="fi-icon">📞</div><div class="fi-text"><strong>Priority Support</strong>Dedicated WhatsApp & email support during pilot</div></div>
+      <div class="fee-include-item"><div class="fi-icon">📋</div><div class="fi-text"><strong>Custom Proposal</strong>Detailed development scope, timeline & full pricing</div></div>
+    </div>
+
+    <div class="divider-label">Choose Payment Method</div>
+
+    <div class="payment-ref-display">
+      <div class="pr-label">Payment Reference (use this when paying)</div>
+      <div class="pr-code" id="paymentRef">VFG-PAY-000000</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px">Include this reference in your payment description</div>
+    </div>
+
+    <div class="payment-method-grid">
+      <label class="pay-method" onclick="selectPayMethod(this,'bank')">
+        <input type="radio" name="payMethod" value="Bank Transfer">
+        <div class="pm-icon">🏦</div>
+        <div class="pm-name">Bank Transfer</div>
+        <div class="pm-detail">NGN / USD bank transfer</div>
+      </label>
+      <label class="pay-method" onclick="selectPayMethod(this,'card')">
+        <input type="radio" name="payMethod" value="Card Payment">
+        <div class="pm-icon">💳</div>
+        <div class="pm-name">Card Payment</div>
+        <div class="pm-detail">Visa, Mastercard, Verve</div>
+      </label>
+      <label class="pay-method" onclick="selectPayMethod(this,'crypto')">
+        <input type="radio" name="payMethod" value="USDT / Crypto">
+        <div class="pm-icon">₿</div>
+        <div class="pm-name">USDT / Crypto</div>
+        <div class="pm-detail">USDT TRC-20 or BEP-20</div>
+      </label>
+      <label class="pay-method" onclick="selectPayMethod(this,'mobile')">
+        <input type="radio" name="payMethod" value="Mobile Money">
+        <div class="pm-icon">📲</div>
+        <div class="pm-name">Mobile Money</div>
+        <div class="pm-detail">MTN, Airtel, M-Pesa</div>
+      </label>
+    </div>
+
+    <div class="bank-details" id="bankDetails">
+      <h4>Nigerian Bank Account (NGN)</h4>
+      <div class="bank-row"><span class="bk-label">Bank Name</span><span class="bk-value" onclick="copyText(this)">Guaranty Trust Bank (GTB)</span></div>
+      <div class="bank-row"><span class="bk-label">Account Name</span><span class="bk-value" onclick="copyText(this)">VFG Technology Limited</span></div>
+      <div class="bank-row"><span class="bk-label">Account Number</span><span class="bk-value" onclick="copyText(this)">0123456789</span></div>
+      <div class="bank-row"><span class="bk-label">Amount (NGN)</span><span class="bk-value" id="ngnAmount" style="color:var(--gold)">Loading...</span></div>
+      <div class="copy-hint">Tap any value to copy · Ref: <span id="bankPayRef" style="color:var(--gold)">VFG-PAY-000000</span></div>
+    </div>
+    <div class="bank-details" id="cardDetails">
+      <h4>Card Payment</h4>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Click the button below to be redirected to our secure payment gateway</p>
+      <button class="btn btn-pay" onclick="openCardPayment()">💳 Pay Now via Card</button>
+    </div>
+    <div class="bank-details" id="cryptoDetails">
+      <h4>USDT Wallet Address</h4>
+      <div class="bank-row"><span class="bk-label">Network</span><span class="bk-value">TRC-20 (Tron) or BEP-20 (BSC)</span></div>
+      <div class="bank-row"><span class="bk-label">Wallet Address</span><span class="bk-value" onclick="copyText(this)" style="font-size:12px;word-break:break-all">TXxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span></div>
+      <div class="bank-row"><span class="bk-label">Amount</span><span class="bk-value" style="color:var(--gold)" id="usdtAmount">$299 USDT</span></div>
+      <div class="copy-hint">Tap address to copy · Send exact amount</div>
+    </div>
+    <div class="bank-details" id="mobileDetails">
+      <h4>Mobile Money</h4>
+      <div class="bank-row"><span class="bk-label">MTN MoMo (Nigeria)</span><span class="bk-value" onclick="copyText(this)">+234 807 775 2526</span></div>
+      <div class="bank-row"><span class="bk-label">Account Name</span><span class="bk-value">VFG Technology</span></div>
+      <div class="bank-row"><span class="bk-label">Amount</span><span class="bk-value" style="color:var(--gold)" id="mobileAmount">Loading...</span></div>
+      <div class="copy-hint">Send payment then upload proof below</div>
+    </div>
+
+    <div class="divider-label">Upload Payment Proof <span class="optional-label">(optional — you can send later)</span></div>
+
+    <div class="field upload-proof">
+      <div class="info-box blue" style="margin-bottom:12px">
+        <strong>ℹ️ Proof upload is optional.</strong> You can submit without it and send your receipt later via WhatsApp or email. VFG will still process your enquiry.
+      </div>
+      <div class="file-upload">
+        <input type="file" id="proofFile" accept="image/*,.pdf" onchange="handleFileUpload('proofFile','proofFileName','')">
+        <div class="upload-icon">📎</div>
+        <p>Upload your payment screenshot or receipt<br><strong>PNG, JPG, PDF</strong> accepted · <em>Optional</em></p>
+        <div class="file-name" id="proofFileName"></div>
+      </div>
+    </div>
+
+    <button class="btn btn-pay" id="confirmPayBtn" onclick="confirmPayment('paid')">✓ I've Made Payment — Confirm Submission</button>
+    <button style="background:transparent;border:none;width:100%;color:var(--muted);font-size:13px;cursor:pointer;margin-top:10px;padding:8px;font-family:'Outfit',sans-serif" onclick="skipToLater()">Skip for now — I'll pay later →</button>
+  </div>
+
+  <!-- PAY LATER SECTION -->
+  <div id="payLaterSection" style="display:none">
+    <div class="paylater-card">
+      <h3>📅 Pay When You're Ready</h3>
+      <p>No problem! We'll send your onboarding invoice by email within 24 hours. Your enquiry will be reviewed and you'll receive a full proposal regardless. Pay the fee when convenient to activate your 14-day pilot.</p>
+    </div>
+    <div class="info-box" style="margin-bottom:20px">
+      <strong>What happens next:</strong><br>
+      VFG will contact you within 24 hours with your proposal and invoice. Your pilot activates as soon as payment is received — there's no rush.
+    </div>
+
+    <!-- Still show currency converter for reference -->
+    <div class="currency-converter">
+      <h4>Fee Reference — In Your Currency</h4>
+      <div class="currency-tabs" id="currencyTabsLater">
+        <div class="currency-tab active" onclick="selectCurrencyLater('USD','$')">🇺🇸 USD</div>
+        <div class="currency-tab" onclick="selectCurrencyLater('NGN','₦')">🇳🇬 NGN</div>
+        <div class="currency-tab" onclick="selectCurrencyLater('GHS','GH₵')">🇬🇭 GHS</div>
+        <div class="currency-tab" onclick="selectCurrencyLater('KES','KSh')">🇰🇪 KES</div>
+        <div class="currency-tab" onclick="selectCurrencyLater('ZAR','R')">🇿🇦 ZAR</div>
+        <div class="currency-tab" onclick="selectCurrencyLater('GBP','£')">🇬🇧 GBP</div>
+        <div class="currency-tab" onclick="selectCurrencyLater('EUR','€')">🇪🇺 EUR</div>
+        <div class="currency-tab" onclick="selectCurrencyLater('USDT','₮')">₿ USDT</div>
+      </div>
+      <div style="text-align:center;padding:16px 0">
+        <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px" id="laterCurrCode">USD</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--gold);letter-spacing:2px" id="laterCurrAmt">$299</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px" id="laterCurrName">US Dollar · Invoice sent by VFG team</div>
+      </div>
+      <div class="converter-note">Indicative rates · Final invoice amount confirmed by VFG · <span>Rates updated live</span></div>
+    </div>
+
+    <button class="btn btn-pay" onclick="confirmPayment('later')" style="margin-top:20px">✓ Submit Enquiry — Send Me an Invoice</button>
+    <button style="background:transparent;border:none;width:100%;color:var(--muted);font-size:13px;cursor:pointer;margin-top:10px;padding:8px;font-family:'Outfit',sans-serif" onclick="setPayTiming('now')">← Go back and pay now instead</button>
+  </div>
+
+  <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:20px">
+    Questions? WhatsApp: <a href="https://wa.me/2348077752526" style="color:var(--green2)">+234 8077752526</a> · 
+    <a href="mailto:info@vfgtechnology.com" style="color:var(--green2)">info@vfgtechnology.com</a>
   </p>
 </div>
 
 <!-- ══ SUCCESS SCREEN ══ -->
 <div class="form-card success-screen" id="successScreen">
   <div class="success-icon">🎉</div>
-  <h2>You're All Set!</h2>
-  <p>Your enquiry and onboarding payment have been submitted. Welcome to the VFG family!</p>
+  <h2 id="successTitle">You're All Set!</h2>
+  <p id="successMsg">Your enquiry has been submitted. Welcome to the VFG family!</p>
   <div class="ref-code" id="finalRefCode">VFG-000000</div>
-  <div class="next-steps">
+  <div class="next-steps" id="nextStepsContainer">
     <h4>What Happens Next</h4>
-    <div class="next-step-item"><div class="ns-num">1</div>VFG verifies your payment (2–4 hours)</div>
-    <div class="next-step-item"><div class="ns-num">2</div>Your platform is set up with your branding within 24 hours</div>
-    <div class="next-step-item"><div class="ns-num">3</div>Onboarding training session scheduled via WhatsApp/Zoom</div>
-    <div class="next-step-item"><div class="ns-num">4</div>14-day pilot begins — full platform access with dedicated support</div>
-    <div class="next-step-item"><div class="ns-num">5</div>Full development proposal delivered within 48 hours</div>
+    <!-- Populated dynamically -->
   </div>
   <p style="margin-top:20px;font-size:13px">
     📧 <a href="mailto:info@vfgtechnology.com">info@vfgtechnology.com</a><br>
@@ -937,26 +1034,41 @@ const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 const BUDGET_LABELS = ['Under $2,000','$2,000 – $5,000','$5,000 – $15,000','$15,000 – $30,000','$30,000 – $50,000','$50,000 – $100,000','$100,000+'];
 
 const ONBOARD_FEES = {
-  'Pools & Lotto Platform (PoolsMaxPro)': { fee: 499, desc: 'Pools & lotto platform setup + 14-day pilot with agent network, POS & ticket printing.' },
-  'Cooplink – Cooperative Management':    { fee: 299, desc: 'Cooperative management platform setup + 14-day pilot with full member & loan management.' },
-  'Finbridge – Financial Services Platform':{ fee: 399, desc: 'Financial services platform setup + 14-day pilot with wallet, transfers & lending.' },
-  'Edubridge – Education Management Platform':{ fee: 249, desc: 'Education platform setup + 14-day pilot with student portal, fees & e-learning.' },
-  'DistroOs – Distribution Management System':{ fee: 349, desc: 'Distribution system setup + 14-day pilot with order tracking & agent network.' },
-  'PharmLink – Pharmacy Management System':{ fee: 299, desc: 'Pharmacy system setup + 14-day pilot with POS, inventory & prescription management.' },
-  'RetailPro – Retail & POS Management':  { fee: 249, desc: 'Retail POS setup + 14-day pilot with inventory, staff & multi-store dashboard.' },
-  'HotelPro – Hotel & Hospitality Management':{ fee: 349, desc: 'Hotel PMS setup + 14-day pilot with bookings, POS & guest management.' },
-  'FarmTrack – Agricultural Management Platform':{ fee: 199, desc: 'Farm management setup + 14-day pilot with crop tracking, livestock & reporting.' },
-  'TaxReacon – Tax & Compliance Platform': { fee: 299, desc: 'Tax platform setup + 14-day pilot with filing, reconciliation & audit trail.' },
-  'StockVault – Investment & Stock Management':{ fee: 299, desc: 'Investment platform setup + 14-day pilot with portfolio & investor portal.' },
+  'Pools & Lotto Platform (PoolsMaxPro)':        { fee: 499, desc: 'Pools & lotto platform setup + 14-day pilot with agent network, POS & ticket printing.' },
+  'Cooplink – Cooperative Management':            { fee: 299, desc: 'Cooperative management platform setup + 14-day pilot with full member & loan management.' },
+  'Finbridge – Financial Services Platform':      { fee: 399, desc: 'Financial services platform setup + 14-day pilot with wallet, transfers & lending.' },
+  'Edubridge – Education Management Platform':    { fee: 249, desc: 'Education platform setup + 14-day pilot with student portal, fees & e-learning.' },
+  'DistroOs – Distribution Management System':    { fee: 349, desc: 'Distribution system setup + 14-day pilot with order tracking & agent network.' },
+  'PharmLink – Pharmacy Management System':       { fee: 299, desc: 'Pharmacy system setup + 14-day pilot with POS, inventory & prescription management.' },
+  'RetailPro – Retail & POS Management':          { fee: 249, desc: 'Retail POS setup + 14-day pilot with inventory, staff & multi-store dashboard.' },
+  'HotelPro – Hotel & Hospitality Management':    { fee: 349, desc: 'Hotel PMS setup + 14-day pilot with bookings, POS & guest management.' },
+  'FarmTrack – Agricultural Management Platform': { fee: 199, desc: 'Farm management setup + 14-day pilot with crop tracking, livestock & reporting.' },
+  'TaxReacon – Tax & Compliance Platform':        { fee: 299, desc: 'Tax platform setup + 14-day pilot with filing, reconciliation & audit trail.' },
+  'StockVault – Warehouse Operations System':     { fee: 299, desc: 'Warehouse system setup + 14-day pilot with inflow/outflow tracking & reconciliation.' },
 };
 
 const PAY_NOTES = {
-  'Milestone-based payments':   { title:'📍 Milestone Payments', text:'Development is divided into agreed milestones. Payment is made at the start of each milestone. Your onboarding fee counts as Milestone 1.' },
-  'Monthly subscription':       { title:'📅 Monthly Subscription', text:'After onboarding, you pay a fixed monthly fee for platform access, hosting & support. Onboarding fee is paid once upfront and covers initial setup & 14-day pilot.' },
-  'Revenue share arrangement':  { title:'🤝 Revenue Share', text:'VFG shares in your platform revenue instead of large upfront fees. Onboarding fee still applies to cover setup costs. Revenue share terms are negotiated in the full proposal.' },
-  'Full upfront payment':       { title:'✅ Full Upfront', text:'Pay the full development cost upfront — usually receives a 10–15% discount. Onboarding fee is included. Fastest route to deployment.' },
-  '50% upfront, 50% on delivery':{ title:'🔄 50/50 Split', text:'50% paid to start development, 50% paid on delivery. Onboarding fee is due before work begins. Balanced risk for both parties.' },
+  'Milestone-based payments':    { title:'📍 Milestone Payments', text:'Development is divided into agreed milestones. Payment is made at the start of each milestone. Onboarding fee counts as Milestone 1.' },
+  'Monthly subscription':        { title:'📅 Monthly Subscription', text:'After onboarding, you pay a fixed monthly fee for platform access, hosting & support. Onboarding fee is paid once upfront.' },
+  'Revenue share arrangement':   { title:'🤝 Revenue Share', text:'VFG shares in your platform revenue. Onboarding fee still applies to cover setup costs. Revenue share terms are negotiated in the full proposal.' },
+  'Full upfront payment':        { title:'✅ Full Upfront', text:'Pay the full development cost upfront — usually receives a 10–15% discount. Fastest route to deployment.' },
+  '50% upfront, 50% on delivery':{ title:'🔄 50/50 Split', text:'50% paid to start development, 50% paid on delivery. Balanced risk for both parties.' },
 };
+
+// Currency metadata
+const CURRENCIES = {
+  USD:  { symbol: '$',    name: 'US Dollar',         decimals: 0 },
+  NGN:  { symbol: '₦',   name: 'Nigerian Naira',     decimals: 0 },
+  GHS:  { symbol: 'GH₵', name: 'Ghanaian Cedi',      decimals: 0 },
+  KES:  { symbol: 'KSh', name: 'Kenyan Shilling',    decimals: 0 },
+  ZAR:  { symbol: 'R',   name: 'South African Rand', decimals: 0 },
+  GBP:  { symbol: '£',   name: 'British Pound',      decimals: 2 },
+  EUR:  { symbol: '€',   name: 'Euro',               decimals: 2 },
+  USDT: { symbol: '₮',   name: 'Tether (USDT)',      decimals: 2 },
+};
+
+// Fallback rates vs USD (used if API fails)
+const FALLBACK_RATES = { USD:1, NGN:1650, GHS:15.5, KES:130, ZAR:18.5, GBP:0.79, EUR:0.92, USDT:1 };
 
 // ═══════════════════════════════════════════
 // STATE
@@ -966,6 +1078,11 @@ let generatedRef = '';
 let logoBase64 = '';
 let brandBase64 = '';
 let proofBase64 = '';
+let liveRates = { ...FALLBACK_RATES };
+let ratesLoaded = false;
+let baseFeeUSD = 299;
+let activeCurrency = 'USD';
+let activeCurrencyLater = 'USD';
 
 // ═══════════════════════════════════════════
 // INIT
@@ -978,6 +1095,141 @@ document.getElementById('primaryColor').addEventListener('input', function(){
 document.getElementById('secondaryColor').addEventListener('input', function(){
   document.getElementById('secondaryColorHex').value = this.value;
 });
+
+// Fetch live exchange rates
+fetchExchangeRates();
+
+// ═══════════════════════════════════════════
+// LIVE EXCHANGE RATES
+// ═══════════════════════════════════════════
+async function fetchExchangeRates() {
+  try {
+    // Try frankfurter.app (free, no key required)
+    const res = await fetch('https://api.frankfurter.app/latest?from=USD&to=GBP,EUR,NGN,GHS,KES,ZAR');
+    if (res.ok) {
+      const data = await res.json();
+      if (data.rates) {
+        liveRates = {
+          USD: 1,
+          GBP: data.rates.GBP || FALLBACK_RATES.GBP,
+          EUR: data.rates.EUR || FALLBACK_RATES.EUR,
+          NGN: data.rates.NGN || FALLBACK_RATES.NGN,
+          GHS: data.rates.GHS || FALLBACK_RATES.GHS,
+          KES: data.rates.KES || FALLBACK_RATES.KES,
+          ZAR: data.rates.ZAR || FALLBACK_RATES.ZAR,
+          USDT: 1.0 // USDT ≈ USD
+        };
+        ratesLoaded = true;
+        document.getElementById('rateBadge').textContent = 'Live rates ✓';
+        document.getElementById('rateBadge').classList.remove('loading');
+        updateAllCurrencyTiles();
+        return;
+      }
+    }
+  } catch(e) {}
+
+  // Fallback: use static rates
+  liveRates = { ...FALLBACK_RATES };
+  document.getElementById('rateBadge').textContent = 'Indicative rates';
+  document.getElementById('rateBadge').classList.remove('loading');
+  updateAllCurrencyTiles();
+}
+
+function convertFromUSD(amountUSD, toCurrency) {
+  const rate = liveRates[toCurrency] || FALLBACK_RATES[toCurrency] || 1;
+  const raw = amountUSD * rate;
+  const { decimals, symbol } = CURRENCIES[toCurrency];
+  const formatted = raw.toLocaleString('en', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+  return { value: raw, formatted: formatted, display: symbol + formatted };
+}
+
+function updateAllCurrencyTiles() {
+  const fee = baseFeeUSD;
+  // Update tile amounts
+  document.getElementById('ngnTile').textContent = convertFromUSD(fee, 'NGN').display;
+  document.getElementById('ghsTile').textContent = convertFromUSD(fee, 'GHS').display;
+  document.getElementById('kesTile').textContent = convertFromUSD(fee, 'KES').display;
+  document.getElementById('gbpTile').textContent = convertFromUSD(fee, 'GBP').display;
+  document.getElementById('eurTile').textContent = convertFromUSD(fee, 'EUR').display;
+
+  // Update NGN bank amount
+  const ngnAmt = convertFromUSD(fee, 'NGN');
+  if (document.getElementById('ngnAmount')) {
+    document.getElementById('ngnAmount').textContent = ngnAmt.display;
+  }
+  if (document.getElementById('mobileAmount')) {
+    document.getElementById('mobileAmount').textContent = ngnAmt.display + ' equivalent';
+  }
+
+  // Update active currency display
+  selectCurrency(activeCurrency, CURRENCIES[activeCurrency].symbol, false);
+  selectCurrencyLater(activeCurrencyLater, CURRENCIES[activeCurrencyLater].symbol, false);
+}
+
+function selectCurrency(code, symbol, updateTab = true) {
+  activeCurrency = code;
+  const { name, decimals } = CURRENCIES[code];
+  const converted = convertFromUSD(baseFeeUSD, code);
+  
+  document.getElementById('activeCurrCode').textContent = code;
+  document.getElementById('activeCurrAmt').textContent = converted.display;
+  document.getElementById('activeCurrName').textContent = name;
+  document.getElementById('feeCurrSymbol').textContent = symbol;
+
+  if (updateTab) {
+    document.querySelectorAll('#currencyTabs .currency-tab').forEach(t => t.classList.remove('active'));
+    event && event.target && event.target.classList.add('active');
+  }
+  // Update USDT amount
+  if (document.getElementById('usdtAmount')) {
+    document.getElementById('usdtAmount').textContent = convertFromUSD(baseFeeUSD, 'USDT').display + ' USDT';
+  }
+}
+
+function selectCurrencyLater(code, symbol, updateTab = true) {
+  activeCurrencyLater = code;
+  const { name } = CURRENCIES[code];
+  const converted = convertFromUSD(baseFeeUSD, code);
+  
+  document.getElementById('laterCurrCode').textContent = code;
+  document.getElementById('laterCurrAmt').textContent = converted.display;
+  document.getElementById('laterCurrName').textContent = name + ' · Invoice sent by VFG team';
+
+  if (updateTab) {
+    document.querySelectorAll('#currencyTabsLater .currency-tab').forEach(t => t.classList.remove('active'));
+    event && event.target && event.target.classList.add('active');
+  }
+}
+
+// ═══════════════════════════════════════════
+// PAY TIMING TOGGLE
+// ═══════════════════════════════════════════
+function setPayTiming(timing) {
+  document.getElementById('cardPayNow').classList.remove('active-now','active-later');
+  document.getElementById('cardPayLater').classList.remove('active-now','active-later');
+  document.getElementById('payNowSection').style.display = 'none';
+  document.getElementById('payLaterSection').style.display = 'none';
+
+  if (timing === 'now') {
+    document.getElementById('cardPayNow').classList.add('active-now');
+    document.getElementById('cardPayNow').querySelector('input').checked = true;
+    document.getElementById('payNowSection').style.display = 'block';
+    updateAllCurrencyTiles();
+  } else {
+    document.getElementById('cardPayLater').classList.add('active-later');
+    document.getElementById('cardPayLater').querySelector('input').checked = true;
+    document.getElementById('payLaterSection').style.display = 'block';
+    updateAllCurrencyTiles();
+  }
+  setTimeout(() => {
+    const target = timing === 'now' ? document.getElementById('payNowSection') : document.getElementById('payLaterSection');
+    target.scrollIntoView({ behavior:'smooth', block:'start' });
+  }, 100);
+}
+
+function skipToLater() {
+  setPayTiming('later');
+}
 
 // ═══════════════════════════════════════════
 // PRODUCT SELECTION
@@ -997,8 +1249,6 @@ function handleFileUpload(inputId, nameId, areaId) {
   if (!file) return;
   const nameEl = document.getElementById(nameId);
   if (nameEl) { nameEl.textContent = '✓ ' + file.name; nameEl.style.display = 'block'; }
-  if (areaId) { document.getElementById(areaId) && document.getElementById(areaId).classList.add('selected'); }
-  // Convert to base64 for submission
   const reader = new FileReader();
   reader.onload = (e) => {
     if (inputId === 'logoFile')  logoBase64  = e.target.result.split(',')[1] || '';
@@ -1013,9 +1263,7 @@ function handleFileUpload(inputId, nameId, areaId) {
 // ═══════════════════════════════════════════
 function syncColor(colorId, hexId) {
   const hex = document.getElementById(hexId).value;
-  if (/^#[0-9A-Fa-f]{6}$/.test(hex)) {
-    document.getElementById(colorId).value = hex;
-  }
+  if (/^#[0-9A-Fa-f]{6}$/.test(hex)) document.getElementById(colorId).value = hex;
 }
 
 // ═══════════════════════════════════════════
@@ -1094,7 +1342,6 @@ function validate(step) {
     req('company',  'company',   notEmpty);
     req('address',  'address',   notEmpty);
     req('country',  'country',   notEmpty);
-    // Logo required
     const logoErr = document.getElementById('e-logo');
     if (!document.getElementById('logoFile').files.length) {
       logoErr.classList.add('show'); ok = false;
@@ -1183,83 +1430,51 @@ function submitForm() {
   btn.textContent = '⏳ Submitting...';
 
   const allDataObject = {
-    // Products
-    products:        getChecked('products'),
-    customProduct:   val('customProduct'),
-    // Contact
-    firstName:       val('firstName'),
-    lastName:        val('lastName'),
-    email:           val('email'),
-    phone:           val('phone'),
-    whatsapp:        val('whatsapp'),
-    role:            val('role'),
-    company:         val('company'),
-    address:         val('address'),
-    city:            val('city'),
-    state:           val('state'),
-    country:         val('country'),
-    website:         val('website'),
-    // Branding
-    brandName:       val('brandName'),
-    primaryColor:    val('primaryColorHex') || document.getElementById('primaryColor').value,
-    secondaryColor:  val('secondaryColorHex') || document.getElementById('secondaryColor').value,
-    logoFile:        logoBase64 ? { data: logoBase64, name: document.getElementById('logoFile').files[0]?.name || 'logo' } : null,
-    brandFile:       brandBase64 ? { data: brandBase64, name: document.getElementById('brandFile').files[0]?.name || 'brand' } : null,
-    // Business
-    bizStage:        getRadio('bizStage'),
-    licenseStatus:   getRadio('license'),
-    userCount:       val('userCount'),
-    transVolume:     val('transVol'),
-    launchDate:      val('launchDate'),
-    multiTenant:     getRadio('multiTenant'),
-    bizDesc:         val('bizDesc'),
-    challenges:      val('challenges'),
-    // Platform
-    channels:        getChecked('channels'),
-    features:        getChecked('features'),
-    posDevice:       getRadio('posDevice'),
-    referral:        val('referral'),
-    // Budget
-    budget:          document.getElementById('budgetDisplay').textContent,
-    paymentPref:     getRadio('payPref'),
-    timeline:        getRadio('timeline'),
-    hasTechTeam:     getRadio('hasTech'),
-    hosting:         getRadio('hosting'),
-    branding:        getRadio('branding'),
-    additionalNotes: val('additionalNotes'),
-    // Meta
-    submittedAt:     new Date().toISOString(),
-    formVersion:     '2.0-multiproduct',
-    source:          'vfg-client-form'
+    products: getChecked('products'), customProduct: val('customProduct'),
+    firstName: val('firstName'), lastName: val('lastName'),
+    email: val('email'), phone: val('phone'), whatsapp: val('whatsapp'),
+    role: val('role'), company: val('company'), address: val('address'),
+    city: val('city'), state: val('state'), country: val('country'), website: val('website'),
+    brandName: val('brandName'),
+    primaryColor: val('primaryColorHex') || document.getElementById('primaryColor').value,
+    secondaryColor: val('secondaryColorHex') || document.getElementById('secondaryColor').value,
+    logoFile: logoBase64 ? { data: logoBase64, name: document.getElementById('logoFile').files[0]?.name || 'logo' } : null,
+    brandFile: brandBase64 ? { data: brandBase64, name: document.getElementById('brandFile').files[0]?.name || 'brand' } : null,
+    bizStage: getRadio('bizStage'), licenseStatus: getRadio('license'),
+    userCount: val('userCount'), transVolume: val('transVol'),
+    launchDate: val('launchDate'), multiTenant: getRadio('multiTenant'),
+    bizDesc: val('bizDesc'), challenges: val('challenges'),
+    channels: getChecked('channels'), features: getChecked('features'),
+    posDevice: getRadio('posDevice'), referral: val('referral'),
+    budget: document.getElementById('budgetDisplay').textContent,
+    paymentPref: getRadio('payPref'), timeline: getRadio('timeline'),
+    hasTechTeam: getRadio('hasTech'), hosting: getRadio('hosting'),
+    branding: getRadio('branding'), additionalNotes: val('additionalNotes'),
+    submittedAt: new Date().toISOString(),
+    formVersion: '3.0-optional-payment',
+    source: 'vfg-client-form'
   };
 
   const errBox = document.getElementById('submitError');
   errBox.style.display = 'none';
 
   fetch(SUPABASE_URL, {
-    method: 'POST',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json',
-      'apikey': SUPABASE_KEY,
-      'Authorization': 'Bearer ' + SUPABASE_KEY
-    },
+    method: 'POST', mode: 'cors',
+    headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY },
     body: JSON.stringify(allDataObject)
   })
   .then(res => res.json())
   .then(data => {
-    console.log('SUCCESS:', data);
     const ref = data.referenceCode || data.ref || data.id ||
       ('VFG-' + Math.random().toString(36).substr(2,6).toUpperCase());
     generatedRef = ref;
     showPaymentScreen(ref, allDataObject.products, allDataObject.paymentPref);
   })
   .catch(err => {
-    console.error('ERROR:', err);
-    btn.disabled = false;
-    btn.textContent = '✓ Submit Enquiry';
-    errBox.textContent = '⚠ Submission failed: ' + (err.message || 'Check connection and try again');
-    errBox.style.display = 'block';
+    // On network error, still generate local ref and proceed
+    const ref = 'VFG-' + Math.random().toString(36).substr(2,6).toUpperCase();
+    generatedRef = ref;
+    showPaymentScreen(ref, allDataObject.products, allDataObject.paymentPref);
   });
 }
 
@@ -1269,39 +1484,24 @@ function submitForm() {
 function showPaymentScreen(ref, products, payPref) {
   document.getElementById('formCard').style.display = 'none';
 
-  // Calculate onboarding fee from selected products
-  let totalFee = 299; // default
-  let feeDesc = 'Platform setup, branding integration, training & 14-day pilot access.';
-
+  // Calculate fee
+  let totalFee = 299;
   const selectedProducts = Object.keys(ONBOARD_FEES).filter(p => products.includes(p));
   if (selectedProducts.length > 0) {
-    // Use highest fee product as base, add 50% for additional products
     const fees = selectedProducts.map(p => ONBOARD_FEES[p].fee).sort((a,b) => b-a);
     totalFee = fees[0];
     if (fees.length > 1) totalFee += fees.slice(1).reduce((a,b) => a + Math.round(b*0.5), 0);
-    const names = selectedProducts.map(p => p.split('–')[0].trim()).join(', ');
-    feeDesc = `Setup & onboarding for: ${names}. Includes 14-day pilot for all selected products.`;
   }
+  baseFeeUSD = totalFee;
 
   const payRef = 'VFG-PAY-' + ref.replace('VFG-','');
-
-  document.getElementById('enquiryRefCode').textContent  = ref;
+  document.getElementById('enquiryRefCode').textContent = ref;
   document.getElementById('onboardFeeAmount').textContent = totalFee;
-  document.getElementById('onboardFeeDesc').textContent   = feeDesc;
-  document.getElementById('paymentRef').textContent       = payRef;
-  document.getElementById('bankPayRef').textContent       = payRef;
-  document.getElementById('usdtAmount').textContent       = '$' + totalFee + ' USDT';
-  document.getElementById('ngnAmount').textContent        = 'Rate provided by VFG team';
+  document.getElementById('paymentRef').textContent = payRef;
+  document.getElementById('bankPayRef').textContent = payRef;
+  document.getElementById('usdtAmount').textContent = '$' + totalFee + ' USDT';
 
-  // Show payment model note for milestone/subscription/rev-share
-  const modelNote = document.getElementById('payModelNote');
-  const specialModels = ['Milestone-based payments','Monthly subscription','Revenue share arrangement'];
-  if (specialModels.includes(payPref)) {
-    const note = PAY_NOTES[payPref];
-    document.getElementById('payModelTitle').textContent = note.title;
-    document.getElementById('payModelText').textContent  = note.text;
-    modelNote.style.display = 'block';
-  }
+  updateAllCurrencyTiles();
 
   document.getElementById('paymentScreen').classList.add('show');
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1317,57 +1517,71 @@ function selectPayMethod(el, type) {
   const map = { bank:'bankDetails', card:'cardDetails', crypto:'cryptoDetails', mobile:'mobileDetails' };
   const det = document.getElementById(map[type]);
   if (det) det.classList.add('show');
-  setTimeout(() => { const el2 = document.getElementById(map[type]); el2 && el2.scrollIntoView({ behavior:'smooth', block:'nearest' }); }, 100);
+  setTimeout(() => { det && det.scrollIntoView({ behavior:'smooth', block:'nearest' }); }, 100);
 }
 
 function openCardPayment() {
-  // Link to Flutterwave/Paystack payment link
   window.open('https://paystack.com/pay/vfg-onboarding', '_blank');
 }
 
-function confirmPayment() {
+// ═══════════════════════════════════════════
+// CONFIRM PAYMENT — NOW OR LATER
+// ═══════════════════════════════════════════
+function confirmPayment(mode) {
   const payRef = document.getElementById('paymentRef').textContent;
   const payMethod = getRadio('payMethod');
-  const errBox = document.getElementById('paymentError');
-  errBox.style.display = 'none';
-
-  const btn = document.getElementById('confirmPayBtn');
-  btn.disabled = true;
-  btn.textContent = '⏳ Confirming...';
 
   const payData = {
     referenceCode: generatedRef,
     paymentRef:    payRef,
-    paymentMethod: payMethod || 'Not specified',
+    paymentMode:   mode, // 'paid' or 'later'
+    paymentMethod: mode === 'paid' ? (payMethod || 'Not specified') : 'Invoice requested',
     proofFile:     proofBase64 ? { data: proofBase64, name: document.getElementById('proofFile').files[0]?.name || 'proof' } : null,
     confirmedAt:   new Date().toISOString(),
     type:          'onboarding_payment_confirmation'
   };
 
+  // Submit to backend (fire and forget — show success regardless)
   fetch(SUPABASE_URL, {
-    method: 'POST',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json',
-      'apikey': SUPABASE_KEY,
-      'Authorization': 'Bearer ' + SUPABASE_KEY
-    },
+    method: 'POST', mode: 'cors',
+    headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY },
     body: JSON.stringify(payData)
-  })
-  .then(res => res.json())
-  .then(() => {
-    document.getElementById('paymentScreen').style.display = 'none';
-    document.getElementById('finalRefCode').textContent = generatedRef;
-    document.getElementById('successScreen').classList.add('show');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  })
-  .catch(() => {
-    // Show success anyway — payment will be verified manually
-    document.getElementById('paymentScreen').style.display = 'none';
-    document.getElementById('finalRefCode').textContent = generatedRef;
-    document.getElementById('successScreen').classList.add('show');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  }).catch(() => {});
+
+  // Show success
+  showSuccessScreen(mode);
+}
+
+function showSuccessScreen(mode) {
+  document.getElementById('paymentScreen').style.display = 'none';
+  document.getElementById('finalRefCode').textContent = generatedRef;
+
+  if (mode === 'paid') {
+    document.getElementById('successTitle').textContent = "Payment Submitted!";
+    document.getElementById('successMsg').textContent = "Your enquiry and payment confirmation have been submitted. VFG will verify and activate your pilot shortly. Welcome to the VFG family!";
+    document.getElementById('nextStepsContainer').innerHTML = `
+      <h4>What Happens Next</h4>
+      <div class="next-step-item"><div class="ns-num">1</div>VFG verifies your payment (2–4 hours)</div>
+      <div class="next-step-item"><div class="ns-num">2</div>Your platform is set up with your branding within 24 hours</div>
+      <div class="next-step-item"><div class="ns-num">3</div>Onboarding training session scheduled via WhatsApp/Zoom</div>
+      <div class="next-step-item"><div class="ns-num">4</div>14-day pilot begins — full platform access with dedicated support</div>
+      <div class="next-step-item"><div class="ns-num">5</div>Full development proposal delivered within 48 hours</div>
+    `;
+  } else {
+    document.getElementById('successTitle').textContent = "Enquiry Submitted!";
+    document.getElementById('successMsg').textContent = "Your enquiry has been received. VFG will review your project and send a full proposal plus your onboarding invoice within 24 hours. No action needed from you right now!";
+    document.getElementById('nextStepsContainer').innerHTML = `
+      <h4>What Happens Next</h4>
+      <div class="next-step-item"><div class="ns-num">1</div>VFG reviews your project details (within 24 hours)</div>
+      <div class="next-step-item"><div class="ns-num">2</div>Full development proposal delivered to your email</div>
+      <div class="next-step-item"><div class="ns-num">3</div>Onboarding invoice sent — pay when you're ready</div>
+      <div class="next-step-item"><div class="ns-num">4</div>14-day pilot activated within 2–4 hours of payment</div>
+      <div class="next-step-item"><div class="ns-num">5</div>Onboarding training & full platform access begins</div>
+    `;
+  }
+
+  document.getElementById('successScreen').classList.add('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // ═══════════════════════════════════════════
